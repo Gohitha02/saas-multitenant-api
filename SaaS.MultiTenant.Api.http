@@ -1,0 +1,6 @@
+@SaaS.MultiTenant.Api_HostAddress = http://localhost:5248
+
+GET {{SaaS.MultiTenant.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
