@@ -1,3 +1,18 @@
+![.NET](https://img.shields.io/badge/.NET-8.0-purple)
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-Web%20API-blue)
+![EF Core](https://img.shields.io/badge/Entity%20Framework-Core-green)
+![Multi-Tenant](https://img.shields.io/badge/Architecture-Multi--Tenant-orange)
+![Swagger](https://img.shields.io/badge/API-Swagger-brightgreen)
+
+![CI](https://github.com/Gohitha02/saas-multitenant-api/actions/workflows/ci.yml/badge.svg)
+![Build](https://img.shields.io/github/actions/workflow/status/Gohitha02/saas-multitenant-api/ci.yml?branch=main)
+![Last Commit](https://img.shields.io/github/last-commit/Gohitha02/saas-multitenant-api)
+![License](https://img.shields.io/github/license/Gohitha02/saas-multitenant-api)
+
+![Stars](https://img.shields.io/github/stars/Gohitha02/saas-multitenant-api?style=social)
+![Forks](https://img.shields.io/github/forks/Gohitha02/saas-multitenant-api?style=social)
+
+
 # SaaS Multi-Tenant API (.NET 8)
 
 A production-ready **multi-tenant SaaS backend API** built with **ASP.NET Core**, **Entity Framework Core**, and **middleware-based tenant resolution**.  
