@@ -1,73 +1,129 @@
-# SaaS Multi-Tenant API (ASP.NET Core)
+# SaaS Multi-Tenant API (.NET 8)
 
-Production-ready **multi-tenant SaaS backend** built with **ASP.NET Core + EF Core**, designed to demonstrate clean tenant isolation, scalable architecture, and API best practices.
-
-## Why this repo
-Recruiter-friendly reference project showing:
-- Multi-tenant request resolution (tenant context per request)
-- Database-backed data access with EF Core
-- Swagger/OpenAPI documentation
-- Strong structure that scales to real SaaS products
+A production-ready **multi-tenant SaaS backend API** built with **ASP.NET Core**, **Entity Framework Core**, and **middleware-based tenant resolution**.  
+Designed using clean separation of concerns and industry best practices to demonstrate real-world SaaS architecture.
 
 ---
 
-## Tech Stack
-- **.NET / ASP.NET Core Web API**
-- **Entity Framework Core**
-- **Swagger (OpenAPI 3.0)**
-- SQL Server / PostgreSQL ready (config-based)
+## 🚀 Features
+
+- 🏢 **Multi-Tenant Architecture**
+  - Tenant resolution via custom middleware
+  - Tenant context scoped per request
+  - Header-based tenant isolation (`X-Tenant-ID`)
+
+- ⚙️ **ASP.NET Core Web API**
+  - RESTful endpoints
+  - Swagger / OpenAPI documentation
+
+- 🗄️ **Entity Framework Core**
+  - Code-first approach
+  - Database migrations
+  - SQL Server / PostgreSQL ready
+
+- 🔒 **Production-Ready Setup**
+  - Environment-based configuration
+  - Proper `.gitignore`
+  - CI pipeline with GitHub Actions
+
+- 🧪 **Extensible Design**
+  - Ready for JWT authentication
+  - Ready for role-based authorization
+  - Ready for caching, logging, and cloud deployment
 
 ---
 
-## Architecture (High Level)
-Request → **Tenant Resolution Middleware** → `TenantContext` → EF Core `DbContext` → Controllers
+## 🧱 Architecture Overview
 
-**Tenant resolution** happens early in the pipeline so every request runs inside the correct tenant scope.
+```text
+Request
+   ↓
+TenantResolutionMiddleware
+   ↓
+TenantContext (Scoped)
+   ↓
+Controllers
+   ↓
+EF Core DbContext
+   ↓
+Database (Tenant-isolated)
 
----
+Project Structure:
+SaaS.MultiTenant.Api
+│
+├── Controllers/        # API endpoints
+├── Data/               # DbContext & EF configuration
+├── Migrations/         # EF Core migrations
+├── Models/             # Domain models
+├── Tenancy/            # Tenant context & middleware
+├── Properties/         # Launch settings
+│
+├── Program.cs          # Application startup
+├── appsettings.json    # Configuration
+└── README.md
 
-## Getting Started
+🛠️ Getting Started
+Prerequisites
 
-### Prerequisites
-- .NET SDK installed (Visual Studio includes it)
-- A database (SQL Server / PostgreSQL)
+.NET 8 SDK
+Visual Studio 2022+
+SQL Server or PostgreSQL
 
-### Run locally
-1. Open the solution in Visual Studio
-2. Set `SaaS.MultiTenant.Api` as Startup Project
-3. Run ▶ (HTTPS)
 
-Swagger UI will open automatically:
-- `https://localhost:<port>/swagger`
+▶️ Run the Application
+dotnet restore
+dotnet run
 
----
+Swagger UI will be available at:
+https://localhost:{port}/swagger
 
-## API Endpoints
-- `GET /api/projects`
-- `POST /api/projects`
+🧪 Testing Multi-Tenancy
 
-Swagger is the source of truth for request/response formats.
+All tenant resolution is handled using an HTTP header.
 
----
+Required Header
+X-Tenant-ID: tenant1
+Example (Swagger)
+Open Swagger UI
+Choose POST /api/projects
 
-## Multi-Tenant Usage
-Tenant can be passed via request header (example):
+Add Header:
+X-Tenant-ID: tenant1
 
-- `X-Tenant-Id: tenant-a`
+Execute the request
+Each tenant gets isolated data.
 
-(Your middleware/tenant context controls how the tenant is detected.)
+🔄 Database Migrations
+dotnet ef migrations add InitialCreate
+dotnet ef database update
 
----
+⚙️ CI/CD
 
-## Roadmap (Next Enhancements)
-- JWT Authentication + RBAC
-- Tenant onboarding endpoints
-- Centralized exception handling + logging
-- CI/CD (GitHub Actions)
-- Docker compose for local DB + API
+GitHub Actions configured
 
----
+Automatic build on every push to main
 
-## Author
-**Gohitha Reddy**  
-LinkedIn: https://www.linkedin.com/in/gohitha-r/
+CI status visible on repository
+
+📈 Planned Enhancements
+🔐 JWT Authentication & Authorization
+👤 Role-based access control
+📊 Serilog structured logging
+⚠️ Global exception handling
+🐳 Docker & docker-compose
+🚀 Cloud deployment (Azure/AWS)
+⚡ Redis caching
+🧪 Unit & integration tests
+
+👩‍💻 Author
+
+Gohitha Reddy
+Senior .NET Developer
+LinkedIn: https://www.linkedin.com/in/gohitha-r
+GitHub: https://github.com/Gohitha02
+
+📄 License
+
+This project is licensed under the MIT License.
+
+
